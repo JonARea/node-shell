@@ -6,15 +6,20 @@ let commands = {
   date: function(){
     let date = new Date();
     process.stdout.write(date.toUTCString())},
-  ls: function(){fs.readdir('.', function(err, files) {
-    if (err) throw err;
-    files.forEach(function(file) {
-      process.stdout.write(file.toString() + "\n");
-    })
+  ls: function(){
+    fs.readdir('.', function(err, files) {
+      if (err) throw err;
+      files.forEach(function(file) {
+        process.stdout.write(file.toString() + "\n");
+      })
     process.stdout.write("prompt > ");
-    });
-}
+    })
+  },
+  echo: function(args) {
+    process.stdout.write(args.slice(1).join(' '))
+    process.stdout.write("\nprompt > ");
 
+  }
 }
 
 
