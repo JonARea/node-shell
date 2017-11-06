@@ -1,4 +1,4 @@
-
+let commands = require('./commands')
 
 process.stdout.write('prompt > ');
 
@@ -6,13 +6,5 @@ process.stdout.write('prompt > ');
 
 process.stdin.on('data', function (input) {
   let cmd = input.toString().trim()
-  if (cmd === 'pwd') {
-    process.stdout.write(process.env.PWD);
-  } else if (cmd === 'date') {
-    let date = new Date()
-    process.stdout.write(date.toUTCString())
-  }
-
-  process.stdout.write('\nprompt > ');
-
+  commands[cmd]();
 });
